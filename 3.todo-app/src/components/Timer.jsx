@@ -7,9 +7,9 @@ const Timer = () => {
       setTimer(timer + 1);
     }, 1000);
 
-    return function() {
+    return function () {
       clearInterval(time);
-    }
+    };
   }, [timer]);
 
   return (
