@@ -1,14 +1,15 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 function ListGroup() {
   let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
   // items = [];
+  const [selectedItem, setSelectedItem] = useState(0);
 
   // we can do the same thing in better way in below jsx
   // if (items.length === 0)
   //   return (
   //     <>
   //       <h1>List</h1>
-  //       <p>List no Found</p>
+  //       <p>List no Found</p>*
   //     </>
   //   );
 
@@ -21,7 +22,7 @@ function ListGroup() {
   // };
 
   // The function that handle the event called event Handler
-  const handleClick = (event: MouseEvent) => console.log(event);
+  // const handleClick = (event: MouseEvent) => console.log(event);
   // In runtime react do React.create Element('h1') but at a time it can create one
   // element but below we use separate tags like h1 and ul so getting the errors
   // There are two ways to remove errors
@@ -42,7 +43,13 @@ function ListGroup() {
       {/* Render list  */}
       <ul className="list-group">
         {items.map((item, index) => (
-          <li className="list-group-item" onClick={handleClick} key={item}>
+          <li
+            className={
+              selectedItem === index ? "list-group-item active" : "list-group-item"
+            }
+            onClick={() => setSelectedItem(index)}
+            key={item}
+          >
             {item}
           </li>
         ))}
