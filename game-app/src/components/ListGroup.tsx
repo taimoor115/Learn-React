@@ -2,9 +2,10 @@ import { MouseEvent, useState } from "react";
 interface Props {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
-function ListGroup({ items, heading }: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
   // items = [];
   const [selectedItem, setSelectedItem] = useState(-1);
 
@@ -53,7 +54,10 @@ function ListGroup({ items, heading }: Props) {
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            onClick={() => setSelectedItem(index)}
+            onClick={() => {
+              setSelectedItem(index);
+              onSelectItem(item);
+            }}
             key={item}
           >
             {item}
