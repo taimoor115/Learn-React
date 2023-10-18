@@ -1,8 +1,12 @@
 import { MouseEvent, useState } from "react";
-function ListGroup() {
-  let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
+interface Props {
+  items: string[];
+  heading: string;
+}
+
+function ListGroup({ items, heading }: Props) {
   // items = [];
-  const [selectedItem, setSelectedItem] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(-1);
 
   // we can do the same thing in better way in below jsx
   // if (items.length === 0)
@@ -33,7 +37,7 @@ function ListGroup() {
     // {items.length === 0 ? <p>No items found</p> : null};
     // We can do same things with variable function and one more
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {/* Same thing with different ways  */}
       {/* {items.length === 0 ? <p>No items found</p> : null} */}
       {/* 1.{getMessage()} */}
@@ -45,7 +49,9 @@ function ListGroup() {
         {items.map((item, index) => (
           <li
             className={
-              selectedItem === index ? "list-group-item active" : "list-group-item"
+              selectedItem === index
+                ? "list-group-item active"
+                : "list-group-item"
             }
             onClick={() => setSelectedItem(index)}
             key={item}
