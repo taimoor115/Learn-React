@@ -1,5 +1,21 @@
 import { MouseEvent, useState } from "react";
-import './ListGroup.css'
+// import styles from "./ListGroup.module.css";
+import styled from "styled-components";
+
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+  color: red;
+`;
+
+interface ListItemProps {
+  active: boolean;
+}
+
+const ListItem = styled.li<ListItemProps>`
+  padding: 5px 0px;
+  background: ${(props) => (props.active ? "blue" : "none")};
+`;
 
 interface Props {
   items: string[];
@@ -48,14 +64,10 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
       {/* {items.length === 0 && <p>No items Found</p>} */}
 
       {/* Render list  */}
-      <ul className="list-group">
+      <List>
         {items.map((item, index) => (
-          <li
-            className={
-              selectedItem === index
-                ? "list-group-item active"
-                : "list-group-item"
-            }
+          <ListItem
+            active={index === selectedItem}
             onClick={() => {
               setSelectedItem(index);
               onSelectItem(item);
@@ -63,9 +75,9 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
             key={item}
           >
             {item}
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 }
