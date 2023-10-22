@@ -1,5 +1,4 @@
-import { ReactNode, HtmlHTMLAttributes } from "react";
-import Alert from "./Alert";
+
 
 interface Props {
   text: string;
