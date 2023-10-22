@@ -67,7 +67,7 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
       <List>
         {items.map((item, index) => (
           <ListItem
-            active={index === selectedItem}
+            active={index === selectedItem }
             onClick={() => {
               setSelectedItem(index);
               onSelectItem(item);
