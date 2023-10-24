@@ -1,3 +1,4 @@
+import produce from "immer";
 // State
 // 1. Update state asynchronusly due to performance enhancement in this way we minimize the render of extra elements
 // 2. State is stored outside the components
@@ -22,6 +23,21 @@ const State = () => {
   const [lastName, setLastName] = useState(" ");
   const [arr, setArr] = useState(["Hello", "Bye"]);
 
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "bug1", fixed: false },
+    { id: 2, title: "bug2", fixed: false },
+  ]);
+
+  const handleBugObject = () => {
+    // setBugs(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
+
+    setBugs(
+      produce((draft) => {
+        const bug = draft.find((bug) => bug.id === 1);
+        if (bug) bug.fixed = true;
+      })
+    );
+  };
   const [drink, setDrink] = useState({
     title: "Pepsi",
     price: 5,
@@ -36,6 +52,7 @@ const State = () => {
       zipCode: 5001,
     },
   });
+
   const handleClick = () => {
     // const newDrink = {
     //   title : 'Coke',
@@ -71,6 +88,12 @@ const State = () => {
       {/* Modify Object */}
       <button onClick={handleClick}>{drink.statement}!</button>
       <button onClick={handleClickEvent}>{arr}</button>
+      {bugs.map((bug) => (
+        <p key={bug.id}>
+          {bug.title} {bug.fixed ? "Fixed" : "New"}
+        </p>
+      ))}
+      <button onClick={handleBugObject}>{"Click Me !!"}</button>
     </>
   );
 };
