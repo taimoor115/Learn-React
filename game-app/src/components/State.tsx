@@ -21,7 +21,6 @@ import { useState } from "react";
 const State = () => {
   const [firstName, setFirstName] = useState(" ");
   const [lastName, setLastName] = useState(" ");
-  const [arr, setArr] = useState(["Hello", "Bye"]);
 
   const [bugs, setBugs] = useState([
     { id: 1, title: "bug1", fixed: false },
@@ -38,6 +37,13 @@ const State = () => {
       })
     );
   };
+
+  const [greet, setGreet] = useState([
+    { id: 1, name: "Qasim" },
+    { id: 2, name: "Taimoor" },
+    { id: 3, name: "Usman" },
+  ]);
+
   const [drink, setDrink] = useState({
     title: "Pepsi",
     price: 5,
@@ -62,6 +68,8 @@ const State = () => {
     setDrink({ ...drink, statement: "2 rupee ki pepsi Qaim apna ****" });
     // setDrink(newDrink);
   };
+
+  const [arr, setArr] = useState(["Hello", "Bye"]);
 
   const handleClickEvent = () => {
     // Add elements

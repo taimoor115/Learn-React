@@ -7,8 +7,12 @@ import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { ReactNode } from "react";
 import State from "./components/State";
+import Navbar from "./components/Navbar";
+import Cart from "./components/Cart";
 function App() {
-  let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
+  // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
+
+  const [items, setItems] = useState(["Potato", "Sugar"]);
 
   // Selected item event handler
   const handleSelectItem = (item: string) => {
@@ -47,6 +51,9 @@ function App() {
       <State />
       {/* <State />
       <State /> */}
+
+      <Navbar cartItemCount={items.length} />
+      <Cart cartItems={items} onClear={() => setItems([])} />
     </>
   );
 }
