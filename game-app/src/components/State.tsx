@@ -20,6 +20,7 @@ import { useState } from "react";
 const State = () => {
   const [firstName, setFirstName] = useState(" ");
   const [lastName, setLastName] = useState(" ");
+  const [arr, setArr] = useState(["Hello", "Bye"]);
 
   const [drink, setDrink] = useState({
     title: "Pepsi",
@@ -45,6 +46,17 @@ const State = () => {
     // setDrink(newDrink);
   };
 
+  const handleClickEvent = () => {
+    // Add elements
+    // setArr([...arr, "Why"]);
+
+    // Remove Elements
+    // setArr(arr.filter((arr) => arr !== "Bye"));
+
+    //Update
+
+    setArr(arr.map((arr) => (arr === "Bye" ? "Changed" : arr)));
+  };
   const handleOnClick = () => {
     setPerson({ ...person, address: { ...person.address, zipCode: 5004 } });
   };
@@ -58,7 +70,7 @@ const State = () => {
 
       {/* Modify Object */}
       <button onClick={handleClick}>{drink.statement}!</button>
-      <button onClick={handleOnClick}>{person.address.zipCode}</button>
+      <button onClick={handleClickEvent}>{arr}</button>
     </>
   );
 };
