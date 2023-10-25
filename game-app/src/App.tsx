@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 import State from "./components/State";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
+import Expandable from "./components/Expandable";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -63,6 +64,7 @@ function App() {
   const handleOnClick = () => {
     setColor((prev) => !prev);
   };
+
   return (
     <>
       {/* <Button1
@@ -88,6 +90,21 @@ function App() {
 
       <Navbar cartItemCount={items.length} />
       <Cart cartItems={items} onClear={() => setItems([])} />
+
+      <Expandable>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
+        maiores ipsam perferendis! Quidem commodi reprehenderit aliquid optio
+        eligendi a rerum, deleniti quam possimus. Quisquam ut accusantium,
+        inventore vel, quas deleniti autem unde sint commodi provident totam
+        iusto illum. Fugit dolorem et voluptas odio est explicabo aliquid id,
+        aperiam adipisci sit facilis molestiae pariatur maiores omnis laudantium
+        in veniam animi reprehenderit ea accusamus. Cumque tempora fuga esse!
+        Consequatur ipsam, nemo modi doloribus autem similique, provident
+        impedit libero vitae illo sequi incidunt tenetur voluptate quisquam
+        labore, quod reiciendis quibusdam unde accusamus excepturi fuga
+        exercitationem deserunt vel. Dicta cumque minus est. Accusantium,
+        quisquam!
+      </Expandable>
     </>
   );
 }
