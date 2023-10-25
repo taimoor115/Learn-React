@@ -38,18 +38,6 @@ const State = () => {
     );
   };
 
-  const [greet, setGreet] = useState([
-    { id: 1, name: "Qasim" },
-    { id: 2, name: "Taimoor" },
-    { id: 3, name: "Usman" },
-  ]);
-
-  const [drink, setDrink] = useState({
-    title: "Pepsi",
-    price: 5,
-    statement: "Hey Qaim Click me Plz",
-  });
-
   const [person, setPerson] = useState({
     firstName: "Taimoor",
     lastName: "Hussain",
@@ -59,6 +47,15 @@ const State = () => {
     },
   });
 
+  const handleOnClick = () => {
+    setPerson({ ...person, address: { ...person.address, zipCode: 5004 } });
+  };
+
+  const [drink, setDrink] = useState({
+    title: "Pepsi",
+    price: 5,
+    statement: "Hey Qaim Click me Plz",
+  });
   const handleClick = () => {
     // const newDrink = {
     //   title : 'Coke',
@@ -82,9 +79,7 @@ const State = () => {
 
     setArr(arr.map((arr) => (arr === "Bye" ? "Changed" : arr)));
   };
-  const handleOnClick = () => {
-    setPerson({ ...person, address: { ...person.address, zipCode: 5004 } });
-  };
+
   // {let count = 0;
   // count++;}
   return (

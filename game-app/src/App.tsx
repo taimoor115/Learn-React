@@ -12,8 +12,42 @@ import Cart from "./components/Cart";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
+  // Exercise updating objects
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: "Taimoor",
+    },
+  });
+  const handleChange = () => {
+    setGame({ ...game, player: { ...game.player, name: "Qasim" } });
+  };
+  const [pizza, setPizza] = useState({
+    name: "Saucy",
+    topping: ["Mushroom"],
+  });
+
+  const handlePizza = () => {
+    setPizza({ ...pizza, topping: [...pizza.topping, "Cheese"] });
+  };
   const [items, setItems] = useState(["Potato", "Sugar"]);
 
+  const [cart, setCart] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "Product 1", quantity: 1 },
+      { id: 2, title: "Product 2", quantity: 1 },
+    ],
+  });
+
+  const handleOnCart = () => {
+    setCart({
+      ...cart,
+      items: cart.items.map((item) =>
+        item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
+      ),
+    });
+  };
   // Selected item event handler
   const handleSelectItem = (item: string) => {
     console.log(item);
