@@ -10,6 +10,7 @@ import State from "./components/State";
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import Expandable from "./components/Expandable";
+import Form from "./components/Form";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -78,16 +79,16 @@ function App() {
       {/* <Button text={"Change Button"} color={"secondary"} onClick={handleClick} /> */}
       {/* <ListGroup items={items}  heading="Cities of Pakistan" onSelectItem={handleSelectItem}/> */}
 
-      {color === false ? (
+      {/* {color === false ? (
         <Heart color="red" onClick={handleOnClick} />
       ) : (
         <AiOutlineHeart size={40} onClick={handleOnClick} />
       )}
 
-      <State />
+      <State /> */}
       {/* <State />
       <State /> */}
-
+      {/*
       <Navbar cartItemCount={items.length} />
       <Cart cartItems={items} onClear={() => setItems([])} />
 
@@ -104,7 +105,9 @@ function App() {
         labore, quod reiciendis quibusdam unde accusamus excepturi fuga
         exercitationem deserunt vel. Dicta cumque minus est. Accusantium,
         quisquam!
-      </Expandable>
+      </Expandable> */}
+
+      <Form />
     </>
   );
 }
