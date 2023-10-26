@@ -1,16 +1,27 @@
 import { FormEvent, useRef, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-interface FormData {
-  name: string;
-  age: number;
-}
+const schema = z.object({
+  name: z
+    .string()
+    .min(3, { message: "Name should be greater than 3 character" }),
+  age: z.number({invalid_type_error:'Age must be enter'}).min(18),
+});
+
+type FormData = z.infer<typeof schema>;
+
+// interface FormData {
+//   name: string;
+//   age: number;
+// }
 const Form = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
   const onHandleSubmit = (data: FieldValues) => console.log(data);
 
   // const nameRef = useRef<HTMLInputElement>(null);
@@ -46,20 +57,15 @@ const Form = () => {
             id="name"
             className="form-control"
           />
-          {errors.name?.type === "required" && (
-            <p className="text-danger">The Field name is required</p>
-          )}
-          {errors.name?.type === "minLength" && (
-            <p className="text-danger">
-              Character should be greater than 3 characters
-            </p>
-          )}
+          {errors.name && <p className="text-danger">{errors.name.message}</p>}
+
           <div className="mb-3">
             <label htmlFor="age" className="form-label">
               Age
             </label>
             <input
-              {...register("age", { required: true })}
+              // {...register("age", { required: true })}
+              {...register("age", { valueAsNumber: true })}
               // ref={ageRef}
               // onChange={(event) =>
               //   setPerson({ ...person, age: event.target.value })
@@ -69,9 +75,7 @@ const Form = () => {
               id="age"
               className="form-control"
             />
-            {errors.name?.type === "required" && (
-              <p className="text-danger">The Field name is required</p>
-            )}
+            {errors.age && <p className="text-danger">{errors.age.message}</p>}
           </div>
         </div>
 
