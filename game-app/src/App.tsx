@@ -13,6 +13,9 @@ import Expandable from "./components/Expandable";
 import Form from "./components/Form";
 import ExpenseList from "./Expense-tracker/Components/ExpenseList";
 import ExpenseFilter from "./Expense-tracker/Components/ExpenseFilter";
+import ExpenseForm from "./Expense-tracker/Components/ExpenseForm";
+
+export const categories = ["Gorceries", "Utitlity", "Entertainment"];
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -123,6 +126,9 @@ function App() {
 
       {/* <Form /> */}
 
+      <div className="mb-5">
+        <ExpenseForm />
+      </div>
       <div className="mb-3">
         <ExpenseFilter
           onSelectCategory={(category) => setSelectedCategory(category)}
