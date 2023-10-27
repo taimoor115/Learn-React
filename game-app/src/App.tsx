@@ -14,8 +14,7 @@ import Form from "./components/Form";
 import ExpenseList from "./Expense-tracker/Components/ExpenseList";
 import ExpenseFilter from "./Expense-tracker/Components/ExpenseFilter";
 import ExpenseForm from "./Expense-tracker/Components/ExpenseForm";
-
-export const categories = ["Gorceries", "Utitlity", "Entertainment"];
+import categories from "./Expense-tracker/Components/categories";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
