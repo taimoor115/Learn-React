@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import Expandable from "./components/Expandable";
 import Form from "./components/Form";
+import ExpenseList from "./Expense-tracker/Components/ExpenseList";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -66,6 +67,13 @@ function App() {
     setColor((prev) => !prev);
   };
 
+  const [expenses, setExpenses] = useState([
+    { id: 1, description: "aaa", amount: 10, category: "Utility" },
+    { id: 2, description: "bbb", amount: 20, category: "Entertainment" },
+    { id: 3, description: "ccc", amount: 10, category: "Utility" },
+    { id: 4, description: "ddd", amount: 20, category: "Entertainment" },
+  ]);
+
   return (
     <>
       {/* <Button1
@@ -107,7 +115,12 @@ function App() {
         quisquam!
       </Expandable> */}
 
-      <Form />
+      {/* <Form /> */}
+
+      <ExpenseList
+        onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
+        expenses={expenses}
+      />
     </>
   );
 }
