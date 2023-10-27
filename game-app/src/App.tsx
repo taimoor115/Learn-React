@@ -12,6 +12,7 @@ import Cart from "./components/Cart";
 import Expandable from "./components/Expandable";
 import Form from "./components/Form";
 import ExpenseList from "./Expense-tracker/Components/ExpenseList";
+import ExpenseFilter from "./Expense-tracker/Components/ExpenseFilter";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -67,12 +68,17 @@ function App() {
     setColor((prev) => !prev);
   };
 
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [expenses, setExpenses] = useState([
     { id: 1, description: "aaa", amount: 10, category: "Utility" },
     { id: 2, description: "bbb", amount: 20, category: "Entertainment" },
     { id: 3, description: "ccc", amount: 10, category: "Utility" },
     { id: 4, description: "ddd", amount: 20, category: "Entertainment" },
   ]);
+
+  const visibleExpenses = selectedCategory
+    ? expenses.filter((e) => e.category === selectedCategory)
+    : expenses;
 
   return (
     <>
@@ -117,9 +123,15 @@ function App() {
 
       {/* <Form /> */}
 
+      <div className="mb-3">
+        <ExpenseFilter
+          onSelectCategory={(category) => setSelectedCategory(category)}
+        />
+      </div>
       <ExpenseList
         onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
-        expenses={expenses}
+        // expenses={expenses}
+        expenses={visibleExpenses}
       />
     </>
   );
