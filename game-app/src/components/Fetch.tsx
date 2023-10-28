@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
 interface User {
@@ -9,12 +9,26 @@ const Fetch = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState("");
 
+  // useEffect(() => {
+  //   axios
+  //     .get<User[]>("https://jsonplaceholder.typicode.com/xusers")
+  //     .then((res) => setUsers(res.data))
+  //     .catch((err) => setError(err.message));
+  // }, []);
+
   useEffect(() => {
-    axios
-      .get<User[]>("https://jsonplaceholder.typicode.com/xusers")
-      .then((res) => setUsers(res.data))
-      .catch((err) => setError(err.message));
-  }, []);
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get<User[]>(
+          "https://jsonplaceholder.typicode.com/xusers"
+        );
+        setUsers(res.data);
+      } catch (err) {
+        setError((err as AxiosError).message);
+      }
+    };
+    fetchUser();
+  });
   return (
     <>
       {error && <p className="text-danger">{error}</p>}
