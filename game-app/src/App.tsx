@@ -15,6 +15,7 @@ import ExpenseList from "./Expense-tracker/Components/ExpenseList";
 import ExpenseFilter from "./Expense-tracker/Components/ExpenseFilter";
 import ExpenseForm from "./Expense-tracker/Components/ExpenseForm";
 import categories from "./Expense-tracker/Components/categories";
+import Effect from "./components/Effect";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -125,7 +126,7 @@ function App() {
 
       {/* <Form /> */}
 
-      <div className="mb-5">
+      {/* <div className="mb-5">
         <ExpenseForm
           onSubmit={(expense) =>
             setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
@@ -141,7 +142,8 @@ function App() {
         onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
         // expenses={expenses}
         expenses={visibleExpenses}
-      />
+      /> */}
+      <Effect />
     </>
   );
 }
