@@ -17,6 +17,7 @@ import ExpenseForm from "./Expense-tracker/Components/ExpenseForm";
 import categories from "./Expense-tracker/Components/categories";
 import Effect from "./components/Effect";
 import ProductList from "./ProductList";
+import Fetch from "./components/Fetch";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -146,7 +147,7 @@ function App() {
         expenses={visibleExpenses}
       /> */}
       {/* <Effect /> */}
-      <select
+      {/* <select
         className="form-select"
         onChange={(event) => setChooseCategory(event.target.value)}
       >
@@ -154,7 +155,9 @@ function App() {
         <option value="Clothing">Clothing</option>
         <option value="Housing">Housing</option>
       </select>
-      <ProductList category={chooseCategory} />
+      <ProductList category={chooseCategory} /> */}
+
+      <Fetch />
     </>
   );
 }
