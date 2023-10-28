@@ -16,6 +16,7 @@ import ExpenseFilter from "./Expense-tracker/Components/ExpenseFilter";
 import ExpenseForm from "./Expense-tracker/Components/ExpenseForm";
 import categories from "./Expense-tracker/Components/categories";
 import Effect from "./components/Effect";
+import ProductList from "./ProductList";
 function App() {
   // let items = ["Lahore", "Karachi", "Multan", "Islamabad", "Sindh"];
 
@@ -83,6 +84,7 @@ function App() {
     ? expenses.filter((e) => e.category === selectedCategory)
     : expenses;
 
+  const [chooseCategory, setChooseCategory] = useState("");
   return (
     <>
       {/* <Button1
@@ -143,7 +145,16 @@ function App() {
         // expenses={expenses}
         expenses={visibleExpenses}
       /> */}
-      <Effect />
+      {/* <Effect /> */}
+      <select
+        className="form-select"
+        onChange={(event) => setChooseCategory(event.target.value)}
+      >
+        <option value=""></option>
+        <option value="Clothing">Clothing</option>
+        <option value="Housing">Housing</option>
+      </select>
+      <ProductList category={chooseCategory} />
     </>
   );
 }
