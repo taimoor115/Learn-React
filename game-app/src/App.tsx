@@ -157,7 +157,7 @@ function App() {
       </select>
       <ProductList category={chooseCategory} /> */}
 
-      <Fetch />
+      {/* <Fetch /> */}
     </>
   );
 }

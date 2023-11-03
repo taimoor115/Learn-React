@@ -1,21 +1,18 @@
 import axios, { AxiosError, CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-
+import userService, {User} from "../services/user-service";
 // Promise are the eventual result or failure of an asyncronus operation
-interface User {
-  id: number;
-  name: string;
-}
+
 const Fetch = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const controller = new AbortController();
+
     setIsLoading(true);
-    apiClient
+
       .get<User[]>("/users", {
         signal: controller.signal,
       })
