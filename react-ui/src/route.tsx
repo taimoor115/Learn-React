@@ -8,14 +8,9 @@ import Homepage from "./pages/Homepage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
-    children: [
-      { index: true, element: <Homepage /> },
-      { path: "/about", element: <About /> },
-      { path: "/contact", element: <Contact /> },
-      { path: "/sign_up", element: <Form /> },
-    ],
+    element: <Homepage />,
   },
+  { path: "/about", element: <About /> },
 ]);
 
 export default router;

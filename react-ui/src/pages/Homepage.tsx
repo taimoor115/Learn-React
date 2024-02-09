@@ -1,51 +1,46 @@
-import { useEffect, useState } from "react";
-import apiClient from "../service/apiClient";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-
-interface Game {
-  id: number;
-  metacritic: number;
-  rating: number;
-  released: string;
-  background_image: string;
-}
-interface FetchResponse {
-  id: number;
-  results: Game[];
-}
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import useGames from "../hooks/useGames";
 const Homepage = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
+  const { games } = useGames("/games");
 
-  useEffect(() => {
-    apiClient
-      .get<FetchResponse>("/games")
-      .then((res) => setGames(res.data.results))
-      .catch((err) => setError(err));
-  });
   console.log(games);
+
   return (
-    <>
-      <Carousel
-        // autoFocus={true}
-        autoPlay={true}
-        infiniteLoop={true}
-        interval={3000}
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-        showThumbs={false}
-        dynamicHeight={true}
-        useKeyboardArrows={true}
-      >
-        {games.map((game) => (
-          <div>
-            <img src={game.background_image} />
+    <Carousel
+      autoFocus={true}
+      autoPlay={true}
+      infiniteLoop={true}
+      interval={3000}
+      transitionTime={3000}
+      showArrows={false}
+      showStatus={false}
+      showIndicators={false}
+      showThumbs={false}
+      dynamicHeight={true}
+      useKeyboardArrows={true}
+    >
+      {games.map((game) => (
+        <div key={game.id} className="relative ">
+          <img
+            className="h-52 lg:h-96 opacity-40 object-fit-cover"
+            src={game.background_image}
+            alt={game.name}
+          />
+
+          <div className="absolute text-left top-1/4 pl-12 text-white">
+            <div className="text-3xl lg:text-6xl md:text-6xl w-3/4 font-extrabold">
+              {game.name}
+            </div>
+            <div>
+              <span>Released Date: {game.released}</span>
+            </div>
+            <div>Rating {game.rating}</div>
+            <div>Metacitics {game.metacritic}</div>
           </div>
-        ))}
-      </Carousel>
-    </>
+        </div>
+      ))}
+    </Carousel>
   );
 };
 
