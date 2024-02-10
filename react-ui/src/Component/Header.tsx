@@ -1,9 +1,9 @@
-
 interface Props {
   name: string;
+  className?: string;
 }
-const Header = ({ name }: Props) => {
-  return <h1 className="text-center font-bold text-4xl">{name}</h1>;
+const Header = ({ name, className }: Props) => {
+  return <h1 className={className}>{name}</h1>;
 };
 
 export default Header;

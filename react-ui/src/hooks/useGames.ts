@@ -14,16 +14,16 @@ interface FetchResponse {
   results: Game[];
 }
 
-const useGames = (endpoint: string) => {
+const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     apiClient
-      .get<FetchResponse>(endpoint)
+      .get<FetchResponse>("/games")
       .then((res) => setGames(res.data.results))
       .catch((err) => setError(err));
-  });
+  }, []);
 
   return { games, error };
 };
