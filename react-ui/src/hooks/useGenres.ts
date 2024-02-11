@@ -1,30 +1,34 @@
 import { useState, useEffect } from "react";
 import apiClient from "../service/apiClient";
 
-interface Genre {
+export interface Genre {
   id: number;
   slug: string;
   image_background: string;
-  description: string;
   name: string;
 }
 interface FetchResponse {
   id: number;
   results: Genre[];
 }
-
 const useGenres = () => {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     apiClient
       .get<FetchResponse>("/genres")
-      .then((res) => setGenres(res.data.results))
-      .catch((err) => setError(err));
+      .then((res) => {
+        setIsLoading(false);
+        setGenres(res.data.results);
+      })
+      .catch((err) => setError(err))
+      .finally(() => setIsLoading(false));
   }, []);
 
-  return { genres, error };
+  return { genres, error, isLoading };
 };
 
 export default useGenres;
