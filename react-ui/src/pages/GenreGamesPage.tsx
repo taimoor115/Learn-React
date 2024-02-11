@@ -4,12 +4,11 @@ import Header from "../Component/Header";
 import useGames from "../hooks/useGames";
 
 const GenrePage = () => {
-  const { games, isLoading } = useGames();
+  const { data, isLoading } = useGames();
+
   const { slug } = useParams();
 
-  console.log(games);
-
-  const game = games.filter((g) =>
+  const game = data?.filter((g) =>
     g.genres.some((genre) => genre.slug == slug)
   );
 

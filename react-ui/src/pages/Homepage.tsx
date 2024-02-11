@@ -1,10 +1,10 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import useGames from "../hooks/useGames";
 import { Link } from "react-router-dom";
 import GenreList from "../Component/GenreList";
+import useGames from "../hooks/useGames";
 const Homepage = () => {
-  const { games } = useGames();
+  const { data } = useGames();
 
   return (
     <>
@@ -22,7 +22,7 @@ const Homepage = () => {
         dynamicHeight={true}
         useKeyboardArrows={true}
       >
-        {games.map((game) => (
+        {data?.map((game) => (
           <>
             <Link to={`/games/${game.id}`}>
               <div key={game.id} className="relative ">

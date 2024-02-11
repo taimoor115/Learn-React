@@ -3,17 +3,17 @@ import useGenres from "../hooks/useGenres";
 import getCropImage from "../service/image-url";
 import Header from "./Header";
 
-const GenreList = () => {
-  const { genres } = useGenres();
+const GamesLists = () => {
+  const { data } = useGenres();
 
   return (
     <>
       <Header
-        className="text-3xl ms-6 mt-5 lg:text-5xl md:text-5xl font-extrabold text-white"
+        className="text-3xl ms-6 mt-5 lg:text-4xl md:text-4xl font-extrabold text-white"
         name="Genre List"
       />
       <div className="m-5 lg:m-10 md:m-10 rounded-lg flex scroll-smooth overflow-x-auto whitespace-nowrap ">
-        {genres.map((genre) => (
+        {data.map((genre) => (
           <div key={genre.id} className="relative group">
             <div className="w-52 h-52 lg:w-72 lg:h-72 md:w-72 md:h-72 overflow-hidden">
               <Link to={`genres/${genre.slug}`}>
@@ -36,4 +36,4 @@ const GenreList = () => {
   );
 };
 
-export default GenreList;
+export default GamesLists;
