@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import apiClient from "../service/apiClient";
 import { Genre } from "./useGenres";
 
-interface Game {
+export interface Game {
   name: string;
   id: number;
   metacritic: number;

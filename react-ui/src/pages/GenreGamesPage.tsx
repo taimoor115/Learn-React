@@ -1,8 +1,7 @@
-import { Link, useParams } from "react-router-dom";
-import useGames from "../hooks/useGames";
+import { useParams } from "react-router-dom";
+import GameCards from "../Component/GameCards";
 import Header from "../Component/Header";
-import CriticScore from "../Component/CriticScore";
-import getCropImage from "../service/image-url";
+import useGames from "../hooks/useGames";
 
 const GenrePage = () => {
   const { games, isLoading } = useGames();
@@ -29,32 +28,7 @@ const GenrePage = () => {
       )}
       <div className="grid text-white grid-col-1 lg:grid-cols-3 md:grid-cols-2 justify-center space-y-3  p-3  justify-items-center items-center ">
         {game.map((g) => (
-          <div className="card w-80 bg-base-100 shadow-xl">
-            <figure>
-              <img
-                className="object-cover"
-                src={getCropImage(g.background_image)}
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title font-extrabold text-left ">{g.name}</h2>
-              <span>
-                {g.genres.map((genre) => (
-                  <p className="inline-block pe-1">{genre.name}</p>
-                ))}
-              </span>
-              <span>Rating {g.rating}</span>
-              <spaActionn>{g.released}</spaActionn>
-              <CriticScore score={g.metacritic} />
-              <div className="card-actions justify-end">
-                <Link to={`/games/${g.id}`}>
-                  <button className="btn btn-accent btn-outline font-bold text-base">
-                    Check
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
+          <GameCards game={g} />
         ))}
       </div>
     </>

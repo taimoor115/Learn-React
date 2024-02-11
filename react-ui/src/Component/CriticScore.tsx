@@ -1,13 +1,20 @@
 interface Props {
   score: number;
 }
+
 const CriticScore = ({ score }: Props) => {
-  let color = score >= 75 ? "error" : score <= 75 ? "warning" : "";
+  const color = score >= 80 ? "error" : score < 80 ? "warning" : "";
 
   return (
     <>
       <div
-        className={`px-2 rounded-badge badge text-white font-bold badge-lg bg-${color}`}
+        className={`px-2 rounded-badge badge text-white font-bold badge-lg ${
+          color === "error"
+            ? "bg-error"
+            : color === "warning"
+            ? "bg-warning"
+            : ""
+        }`}
       >
         {score}
       </div>

@@ -12,7 +12,7 @@ const GenreList = () => {
         className="text-3xl ms-6 mt-5 lg:text-5xl md:text-5xl font-extrabold text-white"
         name="Genre List"
       />
-      <div className="m-5 lg:m-10 md:m-10  flex scroll-smooth overflow-x-auto whitespace-nowrap ">
+      <div className="m-5 lg:m-10 md:m-10 rounded-lg flex scroll-smooth overflow-x-auto whitespace-nowrap ">
         {genres.map((genre) => (
           <div key={genre.id} className="relative group">
             <div className="w-52 h-52 lg:w-72 lg:h-72 md:w-72 md:h-72 overflow-hidden">
