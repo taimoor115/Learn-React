@@ -1,10 +1,10 @@
+import useGames from "../hooks/useGames";
 
 const GameDetailPage = () => {
-  return (
-    <div>
-      Game Detail Page
-    </div>
-  )
-}
+  const { data } = useGames();
+  console.log(data);
 
-export default GameDetailPage
+  return <div></div>;
+};
+
+export default GameDetailPage;

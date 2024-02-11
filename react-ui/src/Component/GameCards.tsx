@@ -19,7 +19,9 @@ const GameCards = ({ game }: Props) => {
         <h2 className="card-title font-extrabold text-left ">{game.name}</h2>
         <span>
           {game.genres.map((g) => (
-            <p className="inline-block pe-1">{g.name}</p>
+            <p key={g.id} className="inline-block pe-1">
+              {g.name}
+            </p>
           ))}
         </span>
         <span>{game.rating}/5</span>

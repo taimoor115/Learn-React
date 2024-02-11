@@ -27,7 +27,7 @@ const GenrePage = () => {
       )}
       <div className="grid text-white grid-col-1 lg:grid-cols-3 md:grid-cols-2 justify-center space-y-3  p-3  justify-items-center items-center ">
         {game.map((g) => (
-          <GameCards game={g} />
+          <GameCards key={g.id} game={g} />
         ))}
       </div>
     </>
