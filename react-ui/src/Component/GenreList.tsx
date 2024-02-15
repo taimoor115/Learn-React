@@ -7,14 +7,16 @@ const GamesLists = () => {
   const { data } = useGenres();
   return (
     <>
-      <Header
-        className="text-3xl ms-6 mt-5 lg:text-4xl md:text-4xl font-extrabold text-white"
-        name="Genres"
-      />
-      <div className="m-5 lg:m-10 md:m-10 rounded-lg flex scroll-smooth overflow-x-auto whitespace-nowrap ">
+      {data && (
+        <Header
+          className="text-3xl ms-6 mt-5 lg:text-4xl md:text-4xl font-extrabold text-white"
+          name="Genres"
+        />
+      )}
+      <div className="m-5 lg:m-12 md:m-10 rounded-lg flex scroll-smooth overflow-x-auto whitespace-nowrap ">
         {data.map((genre) => (
           <div key={genre.id} className="relative group">
-            <div className="w-52 h-52 lg:w-72 lg:h-72 md:w-72 md:h-72 overflow-hidden">
+            <div className="w-52 h-52 lg:w-72 lg:h-60 md:w-72 md:h-72 overflow-hidden">
               <Link to={`genres/${genre.slug}`}>
                 <img
                   className="w-full h-full object-cover transition duration-700 hover:opacity-20 opacity-100"
