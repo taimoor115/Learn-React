@@ -1,18 +1,25 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GameCards from "../Component/GameCards";
 import Header from "../Component/Header";
-import useGames from "../hooks/useGames";
+import useGames, { Game } from "../hooks/useGames";
+import Skeleton from "../Component/Skeleton";
 
 const PlatformsGames = () => {
+  const [games, setGames] = useState<Game[]>([]);
   const { data, isLoading } = useGames();
   const { name } = useParams();
+  const skeleton = [1, 2, 3, 4, 5, 6];
 
-  const game = data.filter((platform) =>
-    platform.platforms.some((p) => p.platform.name == name)
-  );
-
-  if (isLoading)
-    return <span className="loading loading-spinner loading-lg"></span>;
+  useEffect(() => {
+    if (data) {
+      setGames(
+        data.filter((platform) =>
+          platform.platforms.some((p) => p.platform.name == name)
+        )
+      );
+    }
+  }, [data, name]);
 
   return (
     <>
@@ -25,9 +32,8 @@ const PlatformsGames = () => {
         ""
       )}
       <div className="grid text-white grid-col-1 lg:grid-cols-3 md:grid-cols-2 justify-center space-y-3  p-3  justify-items-center items-center ">
-        {game.map((g) => (
-          <GameCards key={g.id} game={g} />
-        ))}
+        {isLoading && skeleton.map((s) => <Skeleton key={s} />)}
+        {games && games.map((game) => <GameCards key={game.id} game={game} />)}
       </div>
     </>
   );

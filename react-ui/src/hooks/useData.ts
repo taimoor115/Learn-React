@@ -21,7 +21,7 @@ const useData = <T>(endpoint: string) => {
       })
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [endpoint]);
 
   return { data, error, isLoading };
 };
