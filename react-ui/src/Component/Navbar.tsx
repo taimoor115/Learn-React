@@ -5,7 +5,9 @@ const Navbar = () => {
     <>
       <div className="navbar bg-base-100">
         <div className="navbar-start">
-          <Link to="/" className="btn btn-ghost text-xl">Games</Link>
+          <Link to="/" className="btn btn-ghost text-xl">
+            Games
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -21,7 +23,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/sign_up" className="btn">Sign up</Link>
+          <Link to="/detail/sign_up" className="btn">
+            Sign up
+          </Link>
         </div>
       </div>
     </>

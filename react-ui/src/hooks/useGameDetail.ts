@@ -14,18 +14,32 @@ interface GameDetails {
   rating_top: number;
 }
 
-const useGameDetail = (slug: string) => {
-  const [data, setData] = useState<GameDetails[]>([]);
+interface Trailer {
+  id: number;
+  name: string;
+  preview: string;
+  data: string;
+}
+
+const useGameDetail = (endpoint: string) => {
+  const [game, setGame] = useState<GameDetails[]>([]);
+  const [movies, setMovies] = useState<Trailer[]>([]);
   const [error, setError] = useState("");
+  const [trailerError, setTrailerError] = useState("");
 
   useEffect(() => {
     apiClient
-      .get(`/games/${slug}`)
-      .then((res) => setData([res.data]))
+      .get(`/games/${endpoint}`)
+      .then((res) => setGame([res.data]))
       .catch((err) => setError(err));
-  }, [slug]);
 
-  return { data, error };
+    apiClient
+      .get(`/games/${endpoint}/movies`)
+      .then((res) => setMovies(res.data))
+      .catch((err) => setTrailerError(err));
+  }, [endpoint]);
+
+  return { game, error, movies, trailerError };
 };
 
 export default useGameDetail;

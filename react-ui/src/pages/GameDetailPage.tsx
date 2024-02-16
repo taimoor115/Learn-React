@@ -1,25 +1,28 @@
 import { useParams } from "react-router-dom";
 import Header from "../Component/Header";
 import useGameDetail from "../hooks/useGameDetail";
+import ExpandableText from "../Component/ExpandableText";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
-  const { data } = useGameDetail(slug!);
-  console.log(data);
+  const { game, movies } = useGameDetail(slug!);
+  console.log(movies);
 
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-      {data.map((game) => (
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 text-white p-8">
+      {game.map((g) => (
         <>
           <div>
-            <Header key={game.id} name={game.name} />
+            <Header className="text-5xl font-bold" key={g.id} name={g.name} />
           </div>
           <div>
-            <p>{game.description_raw}</p>
+            <ExpandableText children={g.description_raw} />
           </div>
 
-          <div>{game.metacritic}</div>
-          <div>{game.released}</div>
+          <div>{g.metacritic}</div>
+          <div>{g.released}</div>
+
+          <div>{/* <video src={movies}></video> */}</div>
         </>
       ))}
     </div>
