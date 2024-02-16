@@ -33,7 +33,7 @@ const GameCards = ({ game }: Props) => {
             <span>{game.released}</span>
             <CriticScore score={game.metacritic} />
             <div className="card-actions justify-end">
-              <Link to={`/games/${game.id}`}>
+              <Link to={`/games/${game.slug}`}>
                 <button className="btn btn-active text-white font-extrabold text-lg">
                   Check
                 </button>

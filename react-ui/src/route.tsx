@@ -6,11 +6,8 @@ import GamesPage from "./pages/GamesPage";
 import Homepage from "./pages/Homepage";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Homepage />,
-  },
-  { path: "/games/:id", element: <GameDetailPage /> },
+  { path: "/", element: <Homepage /> },
+  { path: "/games/:slug", element: <GameDetailPage /> },
   { path: "/about", element: <About /> },
   { path: "/contact", element: <Contact /> },
   { path: "genres/:slug", element: <GamesPage /> },
