@@ -14,16 +14,19 @@ interface GameDetails {
   rating_top: number;
 }
 
-interface Trailer {
+export interface Trailer {
   id: number;
   name: string;
   preview: string;
-  data: string;
+  data: { 480: string; max: string };
+}
+interface FetchResponse {
+  results: Trailer[];
 }
 
 const useGameDetail = (endpoint: string) => {
   const [game, setGame] = useState<GameDetails[]>([]);
-  const [movies, setMovies] = useState<Trailer[]>([]);
+  const [movies, setMovies] = useState<FetchResponse[]>([]);
   const [error, setError] = useState("");
   const [trailerError, setTrailerError] = useState("");
 
@@ -35,7 +38,7 @@ const useGameDetail = (endpoint: string) => {
 
     apiClient
       .get(`/games/${endpoint}/movies`)
-      .then((res) => setMovies(res.data))
+      .then((res) => setMovies([res.data]))
       .catch((err) => setTrailerError(err));
   }, [endpoint]);
 
