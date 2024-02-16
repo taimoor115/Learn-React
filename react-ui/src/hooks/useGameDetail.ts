@@ -14,11 +14,10 @@ interface GameDetails {
   background_image_additional: string;
   rating: number;
   rating_top: number;
-  parent_platforms: {platform: Platform}[]
-  genres: Genre[]
-  publishers: {name: string}[]
+  parent_platforms: { platform: Platform }[];
+  genres: Genre[];
+  publishers: { name: string }[];
 }
-
 
 export interface Trailer {
   id: number;
@@ -29,13 +28,17 @@ export interface Trailer {
 interface FetchResponse {
   results: Trailer[];
 }
+interface ScreenShots {
+  results: { id: string; image: string; height: number; width: number }[];
+}
 
 const useGameDetail = (endpoint: string) => {
   const [game, setGame] = useState<GameDetails[]>([]);
   const [movies, setMovies] = useState<FetchResponse[]>([]);
   const [error, setError] = useState("");
   const [trailerError, setTrailerError] = useState("");
-
+  const [screenShots, setScreenShots] = useState<ScreenShots[]>([]);
+  const [screenShotsErrors, setScreenShotsError] = useState("");
   useEffect(() => {
     apiClient
       .get(`/games/${endpoint}`)
@@ -48,7 +51,12 @@ const useGameDetail = (endpoint: string) => {
       .catch((err) => setTrailerError(err));
   }, [endpoint]);
 
-  return { game, error, movies, trailerError };
+  apiClient
+    .get(`/games/${endpoint}/screenshots`)
+    .then((res) => setScreenShots([res.data]))
+    .catch((err) => setScreenShotsError(err));
+
+  return { game, error, movies, trailerError, screenShots, screenShotsErrors };
 };
 
 export default useGameDetail;
