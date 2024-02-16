@@ -8,7 +8,7 @@ const CriticScore = ({ score }: Props) => {
   return (
     <>
       <div
-        className={`px-2 rounded-badge badge text-white font-bold badge-lg ${
+        className={`rounded-badge badge text-white font-bold badge-lg ${
           color === "error"
             ? "bg-error"
             : color === "warning"

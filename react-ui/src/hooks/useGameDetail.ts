@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../service/apiClient";
+import { Platform } from "./usePlatforms";
+import { Genre } from "./useGenres";
 
 interface GameDetails {
   id: number;
@@ -12,7 +14,11 @@ interface GameDetails {
   background_image_additional: string;
   rating: number;
   rating_top: number;
+  parent_platforms: {platform: Platform}[]
+  genres: Genre[]
+  publishers: {name: string}[]
 }
+
 
 export interface Trailer {
   id: number;
