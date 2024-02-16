@@ -26,6 +26,7 @@ export interface Trailer {
   data: { 480: string; max: string };
 }
 interface FetchResponse {
+  count: number;
   results: Trailer[];
 }
 interface ScreenShots {
@@ -49,12 +50,12 @@ const useGameDetail = (endpoint: string) => {
       .get(`/games/${endpoint}/movies`)
       .then((res) => setMovies([res.data]))
       .catch((err) => setTrailerError(err));
-  }, [endpoint]);
 
-  apiClient
-    .get(`/games/${endpoint}/screenshots`)
-    .then((res) => setScreenShots([res.data]))
-    .catch((err) => setScreenShotsError(err));
+    apiClient
+      .get(`/games/${endpoint}/screenshots`)
+      .then((res) => setScreenShots([res.data]))
+      .catch((err) => setScreenShotsError(err));
+  }, [endpoint]);
 
   return { game, error, movies, trailerError, screenShots, screenShotsErrors };
 };

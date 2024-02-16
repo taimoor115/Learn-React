@@ -5,17 +5,19 @@ interface Props {
 }
 const ShowTrailer = ({ id }: Props) => {
   const { movies } = useGameDetail(id);
+  const first = movies?.map((m) => m?.count).toString();
 
   return (
     <>
-      {movies.map((t) => (
-        <video
-          key={t.results[0].id}
-          src={t?.results[0]?.data[480]}
-          poster={t.results[0].preview}
-          controls
-        ></video>
-      ))}
+      {first != "0" &&
+        movies?.map((t, index) => (
+          <video
+            key={index}
+            src={t?.results[0]?.data[480]}
+            poster={t?.results[0]?.preview}
+            controls
+          ></video>
+        ))}
     </>
   );
 };
