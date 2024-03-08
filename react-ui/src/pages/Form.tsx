@@ -1,4 +1,5 @@
 import Header from "../Component/Header";
+import pic from "../assets/forms.webp";
 
 const Form = () => {
   return (
@@ -15,11 +16,7 @@ const Form = () => {
               <label htmlFor="first-name" className="label">
                 First Name
               </label>
-              <input
-                type="text"
-                placeholder="First Name"
-                className="input"
-              />
+              <input type="text" placeholder="First Name" className="input" />
             </div>
             <div>
               <label htmlFor="last-name" className="label">
@@ -62,11 +59,7 @@ const Form = () => {
           </div>
         </form>
         <div>
-          <img
-            src="/public/forms.webp"
-            className="hidden lg:flex md:flex"
-            alt="pic"
-          />
+          <img src={pic} className="hidden lg:flex md:flex" alt="pic" />
         </div>
       </div>
     </>

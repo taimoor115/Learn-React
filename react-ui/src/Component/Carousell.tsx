@@ -13,11 +13,12 @@ const Carousell = () => {
         autoFocus={true}
         autoPlay={true}
         interval={4000}
+        infiniteLoop={true}
         transitionTime={4000}
-        showArrows={false}
-        showStatus={false}
+        showArrows={true}
+        showStatus={true}
         showIndicators={false}
-        showThumbs={false}
+        showThumbs={true}
         useKeyboardArrows={true}
       >
         {data.map((game) => (

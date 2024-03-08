@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "/home/taimoor_hussain/Desktop/React-Apps/react-ui/public/heaven.png";
+import logo from "../assets/heaven.png"
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
