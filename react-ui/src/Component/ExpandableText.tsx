@@ -14,7 +14,7 @@ const ExpandableText = ({ children, maxChars = 250 }: Props) => {
       {text}...
       <button
         onClick={() => setIsExpandable(!isExpandable)}
-        className="btn btn-warning text-black btn-sm"
+        className="btn bg-amber-400 hover:bg-amber-500 text-black btn-xs"
       >
         {isExpandable ? "Read less" : "Read more"}
       </button>

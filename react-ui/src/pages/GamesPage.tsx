@@ -12,7 +12,7 @@ const GamesPage = () => {
   const skeleton = [1, 2, 3, 4, 5, 6];
 
   useEffect(() => {
-    if (data) {
+    if (data.length) {
       if (slug) {
         // Genre-based filtering
         setGames(

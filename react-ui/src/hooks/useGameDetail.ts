@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../service/apiClient";
 import { Platform } from "./usePlatforms";
 import { Genre } from "./useGenres";
+import { GamesPlatform } from "./useGames";
 
 interface GameDetails {
   id: number;
@@ -17,6 +18,7 @@ interface GameDetails {
   parent_platforms: { platform: Platform }[];
   genres: Genre[];
   publishers: { name: string }[];
+  platforms: GamesPlatform[];
 }
 
 export interface Trailer {
@@ -33,6 +35,15 @@ interface ScreenShots {
   results: { id: string; image: string; height: number; width: number }[];
 }
 
+interface Achievements {
+  count: number;
+  results: { name: string; image: string }[];
+}
+
+interface Series {
+  count: number;
+}
+
 const useGameDetail = (endpoint: string) => {
   const [game, setGame] = useState<GameDetails[]>([]);
   const [movies, setMovies] = useState<FetchResponse[]>([]);
@@ -40,6 +51,8 @@ const useGameDetail = (endpoint: string) => {
   const [trailerError, setTrailerError] = useState("");
   const [screenShots, setScreenShots] = useState<ScreenShots[]>([]);
   const [screenShotsErrors, setScreenShotsError] = useState("");
+  const [achieve, setAchieve] = useState<Achievements[]>([]);
+  const [series, setSeries] = useState<Series[]>([]);
   useEffect(() => {
     apiClient
       .get(`/games/${endpoint}`)
@@ -55,9 +68,26 @@ const useGameDetail = (endpoint: string) => {
       .get(`/games/${endpoint}/screenshots`)
       .then((res) => setScreenShots([res.data]))
       .catch((err) => setScreenShotsError(err));
+
+    apiClient
+      .get(`/games/${endpoint}/achievements`)
+      .then((res) => setAchieve([res.data]));
+
+    apiClient
+      .get(`/games/${endpoint}/game-series`)
+      .then((res) => setSeries([res.data]));
   }, [endpoint]);
 
-  return { game, error, movies, trailerError, screenShots, screenShotsErrors };
+  return {
+    game,
+    error,
+    movies,
+    trailerError,
+    screenShots,
+    screenShotsErrors,
+    achieve,
+    series,
+  };
 };
 
 export default useGameDetail;

@@ -14,11 +14,11 @@ const router = createBrowserRouter([
     children: [
       { path: "games/:slug", element: <GameDetailPage /> },
       { path: "sign_up", element: <Form /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
     ],
   },
   { path: "/", element: <Homepage /> },
-  { path: "/about", element: <About /> },
-  { path: "/contact", element: <Contact /> },
   { path: "genres/:slug", element: <GamesPage /> },
   { path: "/platforms/:name", element: <GamesPage /> },
 ]);

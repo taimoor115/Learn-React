@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import ExpandableText from "../Component/ExpandableText";
-import Header from "../Component/Header";
-import useGameDetail from "../hooks/useGameDetail";
-import ShowTrailer from "../Component/ShowTrailer";
 import GameProperties from "../Component/GameProperties";
+import Header from "../Component/Header";
 import ShowScreenShot from "../Component/ShowScreenShot";
+import ShowTrailer from "../Component/ShowTrailer";
+import useGameDetail from "../hooks/useGameDetail";
 
 const GameDetailPage = () => {
   const { slug } = useParams();

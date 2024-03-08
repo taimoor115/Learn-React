@@ -3,8 +3,8 @@ import Header from "../Component/Header";
 const Form = () => {
   return (
     <>
-      <Header name="Sign Up" />
-      <div className="flex justify-evenly w-full">
+      <Header name="Sign Up" className="text-white text-center text-3xl" />
+      <div className="flex justify-evenly w-full text-white">
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -18,7 +18,7 @@ const Form = () => {
               <input
                 type="text"
                 placeholder="First Name"
-                className="input input-bordered input-md w-full input-accent "
+                className="input"
               />
             </div>
             <div>
@@ -28,7 +28,7 @@ const Form = () => {
               <input
                 type="text"
                 placeholder="Last Name"
-                className="input input-bordered input-md input-accent w-full max-w-xs"
+                className="input w-full max-w-xs"
               />
             </div>
             <div>
@@ -38,7 +38,7 @@ const Form = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className="input input-bordered input-md input-accent w-full max-w-xs"
+                className="input w-full max-w-xs"
               />
             </div>
             <div>
@@ -48,12 +48,12 @@ const Form = () => {
               <input
                 type="password"
                 placeholder="Password"
-                className="input input-bordered input-md input-accent w-full max-w-xs"
+                className="input  w-full max-w-xs"
               />
             </div>
             <div>
               <button
-                className="btn btn-accent sm:btn-sm md:btn-md lg:btn-wide"
+                className="btn text-white btn-neutral sm:btn-sm md:btn-md lg:btn-wide"
                 value="submit"
               >
                 Submit
@@ -62,7 +62,11 @@ const Form = () => {
           </div>
         </form>
         <div>
-          <img src="/public/forms.webp" className="hidden lg:flex md:flex" alt="pic" />
+          <img
+            src="/public/forms.webp"
+            className="hidden lg:flex md:flex"
+            alt="pic"
+          />
         </div>
       </div>
     </>

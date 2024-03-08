@@ -16,7 +16,7 @@ const PlatformList = () => {
       <div className="m-5 lg:m-10 md:m-10 rounded-lg flex scroll-smooth overflow-x-auto whitespace-nowrap ">
         {data.map((platform) => (
           <div key={platform.id} className="relative flex group">
-            <div className=" w-52 lg:w-72 lg:h-72 md:w-72 md:h-72 overflow-hidden">
+            <div className="w-52 h-52 lg:w-72 lg:h-60 md:w-72 md:h-72 overflow-hidden">
               <Link to={`platforms/${platform.name}`}>
                 <img
                   className="w-full h-full object-cover transition duration-700 hover:opacity-20 opacity-100"

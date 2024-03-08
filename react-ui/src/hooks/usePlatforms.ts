@@ -7,6 +7,9 @@ export interface Platform {
   image_background: string;
 }
 
+
+
+
 const usePlatforms = () => useData<Platform>("/platforms");
 
 export default usePlatforms;

@@ -2,8 +2,9 @@ import useData from "./useData";
 import { Genre } from "./useGenres";
 import { Platform } from "./usePlatforms";
 
-interface GamesPlatform {
+export interface GamesPlatform {
   platform: Platform;
+  requirements: { minimum: string; recommended: string };
 }
 export interface Game {
   name: string;
