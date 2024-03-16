@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { add } from "../store/cartSlice";
 import { useDispatch } from "react-redux";
+import { fetchProducts } from "../store/productSlice";
 
 export interface Products {
   category: string;
@@ -15,14 +16,15 @@ const Products = () => {
   const [products, setProducts] = useState<Products[]>([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await fetch("https://fakestoreapi.com/products");
-      const data = await res.json();
-      console.log(data);
-      setProducts(data);
-    };
-    fetchProducts();
-  }, []);
+    dispatch(fetchProducts());
+    // const fetchProducts = async () => {
+    //   const res = await fetch("https://fakestoreapi.com/products");
+    //   const data = await res.json();
+    //   console.log(data);
+    //   setProducts(data);
+    // };
+    // fetchProducts();
+  }, [dispatch]);
 
   const handleAdd = (product: Products) => {
     dispatch(add(product));
