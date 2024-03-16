@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/heaven.png"
+import logo from "../assets/heaven.png";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-center items-center flex-wrap p-2">
       <div className="flex items-center flex-shrink-0 text-white">
-        <img src={logo} className="w-100 h-10 " alt="Logo" />
+        <img src={logo} className="w-100 h-10" alt="Logo" />
       </div>
       <div className="block lg:hidden">
         <button
@@ -31,40 +31,39 @@ const Navbar = () => {
           </svg>
         </button>
       </div>
-      <div
-        className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${
-          isOpen ? "block" : "hidden"
-        }`}
-      >
-        <div className="text-sm lg:flex-grow  ml-96 items-center">
-          <Link
-            to="/"
-            className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4"
-          >
-            Home
-          </Link>
-          <Link
-            to="contact"
-            className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4"
-          >
-            Contact
-          </Link>
-          <Link
-            to="about"
-            className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4"
-          >
-            About
-          </Link>
+      {isOpen ? (
+        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div className="text-sm lg:flex-grow lg:ml-96 md:ml-96 items-center">
+            <Link
+              to="/"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4"
+            >
+              Home
+            </Link>
+            <Link
+              to="contact"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4"
+            >
+              Contact
+            </Link>
+            <Link
+              to="about"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4"
+            >
+              About
+            </Link>
+          </div>
+          <div>
+            <Link to="sign_up">
+              <button className="inline-flex items-center rounded-md btn-md btn-warning border-0 mt-2 p-0 text-white">
+                Sign Up
+              </button>
+            </Link>
+          </div>
         </div>
-        <div>
-          <Link to="sign_up">
-            <button className="inline-flex items-center rounded-md btn-md btn-warning border-0 mt-2 p-0 text-white">
-              Sign Up
-            </button>
-          </Link>
-        </div>
-      </div>
+      ) : null}
     </nav>
   );
 };
+
 export default Navbar;

@@ -13,7 +13,6 @@ const Carousell = () => {
         autoFocus={true}
         autoPlay={true}
         interval={4000}
-        infiniteLoop={true}
         transitionTime={4000}
         showArrows={true}
         showStatus={true}
@@ -25,7 +24,7 @@ const Carousell = () => {
           <Link to={`/detail/games/${game.slug}`} key={game.id}>
             <div className="relative">
               <img
-                className="h-52 opacity-40 lg:h-96 md:h-96 object-fit-cover"
+                className="h-52 opacity-40 lg:h-96 md:h-96 sm:h-full sm:w-full object-fit-cover"
                 src={game.background_image}
                 alt={game.name}
               />
