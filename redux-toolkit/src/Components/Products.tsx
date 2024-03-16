@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface Products {
+export interface Products {
   category: string;
   description: string;
   id: number;
