@@ -4,10 +4,10 @@
 // outside the function. With the help of reducers we can mutate out state.
 
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Products } from "../Components/Products";
+import { Product } from "./productSlice";
 
 interface CartState {
-  items: Products[];
+  items: Product[];
 }
 
 const initialState: CartState = {
@@ -17,9 +17,9 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    add(state, action: PayloadAction<Products>) {
+    add(state, action: PayloadAction<Product>) {
       state.items.push(action.payload);
-      return
+      return;
     },
     remove(state, action: PayloadAction<number>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
