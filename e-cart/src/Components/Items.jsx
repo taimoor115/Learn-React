@@ -7,7 +7,7 @@ const Items = ( props ) => {
     <div>
       <h3>{props.name}</h3>
       <p>Price - ${props.price}</p>
-      <button onClick={(item) => }>Add to Cart</button>
+      {/* <button onClick={(item) => [...]}>Add to Cart</button> */}
     </div>
   )
 }
