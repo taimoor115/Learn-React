@@ -1,25 +1,14 @@
-import React from "react";
-import Navbar from "./Components/Navbar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
+import Counter from "./Components/Counter";
 import { useState } from "react";
-
 const App = () => {
-  const [items, setItems] = useState([]);
-
-  const addToCart = (product) => {
-    setItems([...items, product]);
-  };
+  const [counter, setCounter] = useState(0);
   return (
     <div>
-      <BrowserRouter>
-        <Navbar cartItems={items.length} />
-        <Routes>
-          <Route path="/" element={<Home addToCart={addToCart} />} />
-          <Route path="/cart" element={<Cart items={items} />} />
-        </Routes>
-      </BrowserRouter>
+      <div>Counter is {counter}</div>
+      <Counter counter={counter} setCounter={setCounter} />
+      <Counter counter={counter} setCounter={setCounter} />
+      <Counter counter={counter} setCounter={setCounter} />
+      <Counter counter={counter} setCounter={setCounter} />
     </div>
   );
 };
