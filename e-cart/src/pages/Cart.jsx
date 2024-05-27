@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../Context/Cart";
 
-const Cart = ({ items }) => {
+const Cart = () => {
+  const cartContext = useContext(CartContext);
   return (
     <div>
-      {items.map((item) => (
+      {cartContext.items.map((item) => (
         <div>
           <img src={item.image} alt="" className="w-24" />
           <p className="font bold text-2xl">{item.title}</p>

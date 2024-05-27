@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Context/Cart";
 
-const Navbar = ({ cartItems }) => {
+const Navbar = () => {
+  const cartContext = useContext(CartContext);
+
   return (
     <div className="flex justify-between p-3">
       <div>
@@ -13,7 +17,7 @@ const Navbar = ({ cartItems }) => {
         <Link to="/cart">Cart</Link>
       </div>
       <div>
-        <span>Cart Items: {cartItems}</span>
+        <span>Cart Items: {cartContext.items.length}</span>
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../Context/Cart";
 
-const Products = ({ addToCart }) => {
+const Products = () => {
   const [products, setProducts] = useState([]);
+  const cartContext = useContext(CartContext);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -28,6 +30,7 @@ const Products = ({ addToCart }) => {
                 className="rounded-t-lg h-36 w-full"
                 src={product.image}
                 alt=""
+                width="80px"
               />
             </a>
             <div className="p-5">
@@ -38,7 +41,9 @@ const Products = ({ addToCart }) => {
                 {product.description}
               </p>
               <button
-                onClick={() => addToCart(product)}
+                onClick={() =>
+                  cartContext.setItems([...cartContext.items, product])
+                }
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Price {product.price}
