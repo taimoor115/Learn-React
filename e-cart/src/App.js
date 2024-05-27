@@ -1,16 +1,17 @@
 import Counter from "./Components/Counter";
-import { useState } from "react";
+import { useContext } from "react";
+import { CounterContext } from "./context/CounterContext";
 const App = () => {
-  const [counter, setCounter] = useState(0);
+  const countState = useContext(CounterContext);
+  console.log(countState);
   return (
     <div>
-      <div>Counter is {counter}</div>
-      <Counter counter={counter} setCounter={setCounter} />
-      <Counter counter={counter} setCounter={setCounter} />
-      <Counter counter={counter} setCounter={setCounter} />
-      <Counter counter={counter} setCounter={setCounter} />
+      <div>Counter is {countState.count}</div>
+      <Counter />
+      <Counter />
+      <Counter />
+      <Counter />
     </div>
   );
 };
-
 export default App;

@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
+import { CounterContext } from "../context/CounterContext";
 
-const Counter = ({ setCounter, counter }) => {
+const Counter = () => {
+  const countState = useContext(CounterContext);
+
   return (
     <div className="flex flex-col">
       <button
         onClick={() => {
-          setCounter((counter) => counter + 1);
+          countState.setCount(countState.count + 1);
         }}
         className="bg-gray-200 p-2 rounded"
       >
@@ -13,7 +16,7 @@ const Counter = ({ setCounter, counter }) => {
       </button>
       <button
         onClick={() => {
-          setCounter((counter) => counter - 1);
+          countState.setCount(countState.count - 1);
         }}
         className="bg-gray-200 p-2 rounded"
       >

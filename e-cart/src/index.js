@@ -4,20 +4,17 @@ import "./index.css";
 import App from "./App";
 import { CartProvider } from "./Context/Cart";
 import reportWebVitals from "./reportWebVitals";
-import { CounterContextProvider } from "./context/CounterContext";
+import { CounterProvider } from "./context/CounterContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CartProvider>
-      <CounterContextProvider>
+      <CounterProvider>
         <App />
-      </CounterContextProvider>
+      </CounterProvider>
     </CartProvider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
