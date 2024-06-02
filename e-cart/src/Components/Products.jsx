@@ -1,9 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../Context/Cart";
+import { CartContext } from "../context/Cart";
+import { useDispatch } from "react-redux";
+import { add } from "../store/cartSlice";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const cartContext = useContext(CartContext);
+  const dispatch = useDispatch();
+
+  const handleAdd = (product) => {
+    dispatch(add(product));
+  };
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -41,9 +47,7 @@ const Products = () => {
                 {product.description}
               </p>
               <button
-                onClick={() =>
-                  cartContext.setItems([...cartContext.items, product])
-                }
+                onClick={() => handleAdd(product)}
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Price {product.price}
