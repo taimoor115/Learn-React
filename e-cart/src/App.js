@@ -1,27 +1,19 @@
-import React, { useMemo, useState } from "react";
-const UseMemoCallback = () => {
+import React, { useCallback, useState } from "react";
+import Child from "./Components/Child";
+
+const App = () => {
   const [add, setAdd] = useState(0);
-  const [miuns, setMinus] = useState(100);
 
-  const multiply = useMemo(() => {
-    console.log("I'm in");
-    return add * 10;
-  }, [add]);
+  const childPropFn = useCallback(() => {
+    console.log("ChildPropFn");
+  }, []);
   return (
-    <>
-      <div>{multiply}</div>
-      <button onClick={() => setAdd(add + 1)}>Add {add}</button>
-      <button onClick={() => setMinus(miuns - 1)}>Minus {miuns}</button>
-    </>
-  );
-};
-
-export function App(props) {
-  return (
-    <div className="App">
-      <UseMemoCallback />
+    <div>
+      <h1>{add}</h1>
+      <button onClick={() => setAdd(add + 1)}>Add</button>
+      <Child childPropFn={childPropFn} />
     </div>
   );
-}
+};
 
 export default App;
