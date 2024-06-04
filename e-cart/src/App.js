@@ -1,17 +1,15 @@
-import React, { useCallback, useState } from "react";
-import Child from "./Components/Child";
+import React, { useReducer } from "react";
+import { reducer } from "./reducer/counterReducer";
 
 const App = () => {
-  const [add, setAdd] = useState(0);
-
-  const childPropFn = useCallback(() => {
-    console.log("ChildPropFn");
-  }, []);
+  const [state, dispatch] = useReducer(reducer, 0);
   return (
     <div>
-      <h1>{add}</h1>
-      <button onClick={() => setAdd(add + 1)}>Add</button>
-      <Child childPropFn={childPropFn} />
+      <h2>Count {state}</h2>
+      <button onClick={() => dispatch("Increment")}>Add</button>
+      <button disabled={state <= 0} onClick={() => dispatch("Decrement")}>
+        Minus
+      </button>
     </div>
   );
 };
