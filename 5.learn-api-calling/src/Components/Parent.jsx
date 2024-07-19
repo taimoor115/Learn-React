@@ -1,13 +1,12 @@
-import React, { useRef } from "react";
-import Child from "./Child";
+import React from "react";
 
-const Parent = () => {
-  const ref = useRef();
+const Parent = ({ sayHello }) => {
+  const handleClick = () => {
+    sayHello();
+  };
   return (
     <div>
-      Parent
-      <Child ref={ref} />
-      <button onClick={() => ref.current.sayHello()}>Button</button>
+      <button onClick={handleClick}>Button</button>
     </div>
   );
 };

@@ -1,15 +1,16 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React from "react";
+import Parent from "./Parent";
 
-const Child = (props, ref) => {
-  useImperativeHandle(ref, () => {
-    return {
-      sayHello,
-    };
-  });
-  const sayHello = () => {
-    console.log("Hello Brother");
-  };
-  return <div>Child</div>;
+const Child = () => {
+  function sayHello() {
+    console.log("Hello");
+  }
+  return (
+    <div>
+      Child
+      <Parent sayHello={sayHello} />
+    </div>
+  );
 };
 
-export default forwardRef(Child);
+export default Child;
